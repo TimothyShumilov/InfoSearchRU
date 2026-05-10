@@ -25,13 +25,13 @@ InfoSearchRU — адаптация фреймворка [InfoSearch](https://gi
 
 Мета-инструкции задают требования к общим характеристикам документа (язык, аудитория, источник и т.д.), не зависящие от конкретного содержания запроса.
 
-| Датасет | Условия |
-|---------|---------|
-| [Language-v1-ru](https://huggingface.co/datasets/tim-shu/Language-v1-ru) | `[Chinese]`, `[English]` |
-| [Clarity-v1-ru](https://huggingface.co/datasets/tim-shu/Clarity-v1-ru) | `[keyword]` — точное вхождение ключевого слова в документ |
-| [Source-v1-ru](https://huggingface.co/datasets/tim-shu/Source-v1-ru) | `[blog]`, `[forum post]`, `[news]` |
-| [Audience-v1-ru](https://huggingface.co/datasets/tim-shu/Audience-v1-ru) | `[layman]`, `[expert]` |
-| [Length-v1-ru](https://huggingface.co/datasets/tim-shu/Length-v1-ru) | `[sentence]`, `[paragraph]`, `[article]` |
+| Датасет |
+|---------|
+| [Language-v1-ru](https://huggingface.co/datasets/tim-shu/Language-v1-ru) |
+| [Clarity-v1-ru](https://huggingface.co/datasets/tim-shu/Clarity-v1-ru) |
+| [Source-v1-ru](https://huggingface.co/datasets/tim-shu/Source-v1-ru) |
+| [Audience-v1-ru](https://huggingface.co/datasets/tim-shu/Audience-v1-ru) |
+| [Length-v1-ru](https://huggingface.co/datasets/tim-shu/Length-v1-ru) |
 
 ### Валидационная выборка с контекстными инструкциями
 
