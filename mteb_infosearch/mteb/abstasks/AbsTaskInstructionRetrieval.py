@@ -191,6 +191,8 @@ class HFDataLoaderInstructions(HFDataLoader):
                     "instruction_og",
                     "instruction_changed",
                     "instruction_reversed",
+                    "only_instruction_changed",
+                    "only_instruction_reversed",
                     "keywords",
                     "short_query",
                 ]
@@ -316,13 +318,13 @@ class AbsTaskInstructionRetrieval(AbsTask):
             # ]
 
             ori_instructions = {
-                query["text"] + query["id"]: query["instruction_og"] for  query in queries
+                query["text"] + query["id"]: "" for query in queries
             }
             ins_instructions = {
-                query["text"] + query["id"]: query["instruction_changed"] for  query in queries
+                query["text"] + query["id"]: query["only_instruction_changed"] for query in queries
             }
             rev_instructions = {
-                query["text"] + query["id"]: query["instruction_reversed"] for  query in queries
+                query["text"] + query["id"]: query["only_instruction_reversed"] for query in queries
             }
             if self.do_length_ablation:
                 keywords = {query["text"]: query["keywords"] for query in queries}
@@ -538,6 +540,31 @@ class AbsTaskInstructionRetrieval(AbsTask):
                 "reversed": scores_reversed,
                 "rev_result":results_rev
             }
+
+            # Extract top-level NDCG and MRR metrics for easy access
+            overall_evaluate_scores.update({
+                # NDCG metrics
+                "ndcg_at_5_original": scores_ori.get("ndcg_at_5", 0.0),
+                "ndcg_at_10_original": scores_ori.get("ndcg_at_10", 0.0),
+                "ndcg_at_5_instruction": scores_ins.get("ndcg_at_5", 0.0),
+                "ndcg_at_10_instruction": scores_ins.get("ndcg_at_10", 0.0),
+                "ndcg_at_5_reversed": scores_reversed.get("ndcg_at_5", 0.0),
+                "ndcg_at_10_reversed": scores_reversed.get("ndcg_at_10", 0.0),
+
+                # MRR metrics
+                "mrr_at_10_original": scores_ori.get("mrr_at_10", 0.0),
+                "mrr_at_10_instruction": scores_ins.get("mrr_at_10", 0.0),
+                "mrr_at_10_reversed": scores_reversed.get("mrr_at_10", 0.0),
+
+                # MAP metrics for completeness
+                "map_at_1000_original": scores_ori.get("map_at_1000", 0.0),
+                "map_at_1000_instruction": scores_ins.get("map_at_1000", 0.0),
+                "map_at_1000_reversed": scores_reversed.get("map_at_1000", 0.0),
+
+                # Computed robustness deltas
+                "ndcg_delta_ins_vs_ori": scores_ins.get("ndcg_at_5", 0.0) - scores_ori.get("ndcg_at_5", 0.0),
+                "ndcg_delta_rev_vs_ori": scores_reversed.get("ndcg_at_5", 0.0) - scores_ori.get("ndcg_at_5", 0.0),
+            })
 
             if self.do_length_ablation:
                 keywords, short_instructions = (

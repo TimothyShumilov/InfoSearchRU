@@ -1,5 +1,0 @@
-Dimension: Audience, Core query count: 201
-Dimension: Clarity, Core query count: 100
-Dimension: Format, Core query count: 158
-Dimension: Language, Core query count: 200
-Dimension: Source, Core query count: 137

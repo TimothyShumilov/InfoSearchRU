@@ -20,7 +20,7 @@ setup(
         'Requests==2.32.3',
         'rich==13.9.2',
         'scikit_learn==1.5.2',
-        'scipy==1.14.1',
+        'scipy==1.13.1',
         'sentence_transformers==2.7.0',
         'torch==2.4.0',
         'tqdm==4.66.4',

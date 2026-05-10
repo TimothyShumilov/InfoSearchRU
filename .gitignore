@@ -1,0 +1,17 @@
+# macOS
+.DS_Store
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
+# Build artifacts
+mteb_infosearch/build/
+mteb_infosearch/dist/
+mteb_infosearch/*.egg-info/
+*.whl
+*.tar.gz
+
+# IDE
+.idea/

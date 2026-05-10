@@ -62,9 +62,9 @@ def gather_results(args, dataset_in_table=["Robust04InstructionRetrieval", "News
             map1000 = data["individual"]["original"]["map_at_1000"]
             ndcg5 = data["individual"]["original"]["ndcg_at_5"]
 
-            # map@1000 and ndcg@5 of the changed
-            map1000_changed = data["individual"]["changed"]["map_at_1000"]
-            ndcg5_changed = data["individual"]["changed"]["ndcg_at_5"]
+            # map@1000 and ndcg@5 of the instruction mode
+            map1000_changed = data["individual"]["instruction"]["map_at_1000"]
+            ndcg5_changed = data["individual"]["instruction"]["ndcg_at_5"]
 
             # map@100 and ndcg@5 of the base
             map1000_base = data["length_ablation"]["base"]["map_at_1000"]
